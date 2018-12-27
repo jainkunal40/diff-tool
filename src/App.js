@@ -1,28 +1,34 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import {
+  Navbar,
+  NavbarBrand,
+  Collapse,
+  Nav,
+  NavItem,
+  NavLink
+} from "reactstrap";
+import "./App.scss";
+import { Route } from "react-router-dom";
+import CommiteView from './pages/commitView';
+import Home from './pages/home'
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
-}
+const App = () => {
+  return (
+    <div>
+      <Navbar color="inverse" light expand="md">
+        <NavbarBrand href="/">Difference Tool</NavbarBrand>
+        <Collapse isOpen={true} navbar>
+          <Nav className="ml-auto" navbar>
+            <NavItem>
+              <NavLink href="/">Home</NavLink>
+            </NavItem>
+          </Nav>
+        </Collapse>
+      </Navbar>
+      <Route exact={true} path="/" component={Home} />
+      <Route path="/commiteView" component={CommiteView} />
+    </div>
+  );
+};
 
 export default App;
